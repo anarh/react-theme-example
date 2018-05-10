@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import logo from '../../logo.svg';
 
-class Header extends React.Component {
+class Header extends Component {
   render () {
+    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+
     return <header className='header'>
       <div className={`container is-fluid`}>
-        <a href='#'>
+        <a href={baseUrl}>
           <img src={logo} alt='logo text' className='logo' />
         </a>
       </div>

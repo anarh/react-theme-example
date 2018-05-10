@@ -6,13 +6,13 @@ import Enzyme from 'enzyme';
 import cheerio from 'cheerio';
 import Adapter from 'enzyme-adapter-react-16';
 
-import Header from './';
+import Footer from './';
 const shallow = Enzyme.shallow;
 
 Enzyme.configure({ adapter: new Adapter() });
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Header />, div);
+  ReactDOM.render(<Footer />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
