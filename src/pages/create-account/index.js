@@ -46,7 +46,7 @@ class CreateAccount extends Component {
     });
     this.setState({ submitted: false });
 
-    if (this.props.loginRecovery.isError) return;
+    if (this.props.createAccount.isError) return;
     this.props.history.push('/login');
   }
 
@@ -58,7 +58,7 @@ class CreateAccount extends Component {
     return <main className='main-content'>
       <div className='container'>
         <section className='doc-content'>
-        <div className={'hiq-well hiq-create-account-well'}>
+          <div className={`hiq-well hiq-create-account-well`}>
           <h1 className='login-form-header'>Create Account</h1>
           <p className='is-login-form-message'>Create a merchant account with the following information</p>
 

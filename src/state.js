@@ -17,6 +17,9 @@ const getInitialState = (config) => {
   return {
     accessToken: null,
     isAuthenticated: false,
+    createAccount: {
+      isError: false
+    },
     loginRecovery: {
       isError: false,
       isVerified: false,
@@ -198,12 +201,9 @@ const createAccount = ({
   merchantDescription,
   username
 }) => async state => {
-  const loginRecovery = state.loginRecovery;
   let data = null;
-  loginRecovery.isError = false;
-
   try {
-    data = await axios.post(`/auth/login/get-accounts`, {
+    data = await axios.post(`/create-account`, {
       firstname,
       lastname,
       phone,
@@ -214,10 +214,19 @@ const createAccount = ({
       username
     });
   } finally {
-    if (data && data.status === 200) loginRecovery.userAccounts = data.data.accounts;
+    if (data && data.status !== 201) {
+      return {
+        createAccount: {
+          isError: true
+        }
+      };
+    }
 
-    if (!data) loginRecovery.isError = true;
-    return { loginRecovery }; // eslint-disable-line
+    return {
+      createAccount: {
+        isError: false
+      }
+    };
   }
 };
 
