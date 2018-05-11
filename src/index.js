@@ -6,11 +6,13 @@ import { Provider, subscribe } from 'react-contextual';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
+// Components
 import header from './components/header';
-import footer from './components/footer';
 
+// Pages
 import index from './pages/index';
 import login from './pages/login';
+import createAccount from './pages/create-account';
 
 import { initialState, actions } from './state';
 
@@ -18,12 +20,15 @@ import { initialState, actions } from './state';
 // require('babel-polyfill');
 
 const Header = subscribe()(header);
-const Footer = subscribe()(footer);
-
 const Index = subscribe()(index);
 const Login = subscribe()(login);
+const CreateAccount = subscribe()(createAccount);
 
-const ProtectedRoute = subscribe()(({component: Component, isAuthenticated, ...rest}) => (
+const ProtectedRoute = subscribe()(({
+  component: Component,
+  isAuthenticated,
+  ...rest
+}) => (
   <Route
     {...rest}
     render={props =>
@@ -40,7 +45,7 @@ ReactDOM.render(
         <Header />
         <ProtectedRoute exact path='/' component={Index} />
         <Route path='/login' component={Login} />
-        <Footer />
+        <Route path='/create-account' component={CreateAccount} />
       </React.Fragment>
     </BrowserRouter>
   </Provider>,

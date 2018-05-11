@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import logo from '../../logo.svg';
 
 class Header extends Component {
   render () {
@@ -16,7 +15,7 @@ class Header extends Component {
       </ul>
       <ul className='hiq-account-links'>
         <li>
-          <small><a href={`${baseUrl}/login/create-account`}>Create Account</a></small>
+          <small><a href={`${baseUrl}/create-account`}>Create Account</a></small>
         </li>
       </ul>
     </Fragment>;

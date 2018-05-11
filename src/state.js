@@ -5,6 +5,7 @@ import axios from 'axios';
 // const locales = require('./locales.json');
 // const cobrands = require('./cobrands.json');
 
+import locale from './locale';
 axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 axios.defaults.headers.common['X-Mashape-Key'] = process.env.REACT_APP_API_KEY;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -27,6 +28,7 @@ const getInitialState = (config) => {
       type: null,
       userAccounts: []
     },
+    locale: locale,
     // config: config,
     // locale: {
     //   locales: process.env.REACT_APP_DEFAULT_LOCALE,
@@ -118,7 +120,7 @@ const createPassword = ({ password }) => async state => {
     });
   } finally {
     if (data && data.status === 200) {
-      // loginRecovery = getInitialState(config).loginRecovery;
+      loginRecovery = getInitialState({}).loginRecovery;
       loginRecovery.isPasswordReset = true;
     }
 
@@ -186,6 +188,39 @@ const getAccounts = () => async state => {
   }
 };
 
+const createAccount = ({
+  firstname,
+  lastname,
+  phone,
+  email,
+  password,
+  merchantName,
+  merchantDescription,
+  username
+}) => async state => {
+  const loginRecovery = state.loginRecovery;
+  let data = null;
+  loginRecovery.isError = false;
+
+  try {
+    data = await axios.post(`/auth/login/get-accounts`, {
+      firstname,
+      lastname,
+      phone,
+      email,
+      password,
+      merchantName,
+      merchantDescription,
+      username
+    });
+  } finally {
+    if (data && data.status === 200) loginRecovery.userAccounts = data.data.accounts;
+
+    if (!data) loginRecovery.isError = true;
+    return { loginRecovery }; // eslint-disable-line
+  }
+};
+
 // const setLocale = (localeCode) => (state) => {
 //   let cobrand = state.cobrand;
 //   let locale = state.locale;
@@ -212,7 +247,7 @@ const getAccounts = () => async state => {
 const setSelectedUsername = (username) => async (state) => {
   let loginRecovery = null;
   try {
-    // loginRecovery = getInitialState(config).loginRecovery;
+    loginRecovery = getInitialState({}).loginRecovery;
     loginRecovery.selectedUsername = username;
   } finally {
     return { loginRecovery }; // eslint-disable-line
@@ -251,6 +286,7 @@ const toggleDevMode = () => (state) => ({ dev: !state.dev });
 export const actions = {
   authenticate,
   createPassword,
+  createAccount,
   forgotPassword,
   forgotUsername,
   getAccounts,
