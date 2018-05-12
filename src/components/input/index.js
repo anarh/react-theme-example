@@ -18,9 +18,9 @@ class Input extends Component {
   }
 
   componentDidMount () {
-    // if (this.props.defaultValue) {
-    //   this.setState({focused: true});
-    // }
+    if (this.props.defaultValue) {
+      this.setState({focused: true});
+    }
   }
 
   componentWillReceiveProps (nextProps) {
@@ -31,7 +31,7 @@ class Input extends Component {
 
   handleFocus (e) {
     e.preventDefault();
-    // this.setState({focused: true});
+    this.setState({focused: true});
   }
 
   handleBlur (e) {
@@ -41,7 +41,9 @@ class Input extends Component {
     // } else {
     //   this.setState({focused: false});
     // }
+
     this.setValidity();
+    this.props.onBlur(e);
   }
 
   handleChange (e) {
@@ -70,7 +72,11 @@ class Input extends Component {
     //   // console.log('hide default browser tooltip');
     // };
 
-    if (!input.checkValidity() || (input.required && !input.value.trim().length)) {
+    if (this.state.focused &&
+        (!input.checkValidity() ||
+          (input.required && !input.value.trim().length)
+        )
+      ) {
       this.setState({valid: false});
       input.setAttribute('aria-invalid', true);
       return;
@@ -165,6 +171,7 @@ Input.propTypes = {
   minLength: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   pattern: PropTypes.string,
   placeholder: PropTypes.string,
   readOnly: PropTypes.bool,
@@ -191,6 +198,7 @@ Input.defaultProps = {
   minLength: null,
   name: null,
   onChange: () => {},
+  onBlur: () => {},
   pattern: null,
   placeholder: null,
   readOnly: false,

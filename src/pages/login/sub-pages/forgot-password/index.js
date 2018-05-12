@@ -45,39 +45,45 @@ class ForgotPassword extends Component {
     return <section className='doc-content'>
       <div className={'hiq-well hiq-login-well'}>
         <h1 className='login-form-header'>{t['forgot-password']}</h1>
-
+        <p className='is-login-form-message'>{t['retrieve-password-message']}</p>
+        {
+          this.props.loginRecovery.isError && (
+            <p className={`is-form-error`} role='alert' aria-atomic='true'>
+              Invalid username and/or email address
+            </p>
+          )
+        }
         <form
           onSubmit={(e) => { this.handleSubmit(e); }}
           className={`${this.state.submitted ? 'form-submitted' : ''}`}
           method='POST'
           action='/'>
           <fieldset>
-            <p className='is-login-form-message'>{t['retrieve-password-message']}</p>
+            <Input
+              autoFocus
+              checkValidity={checkValidity}
+              className='input-container'
+              id='username'
+              label={t['username']}
+              maxLength='40'
+              name='username'
+              required
+              store={store}
+              title={t['username-required']}
+              type='text'
+            />
 
-              <Input
-                autoFocus
-                checkValidity={checkValidity}
-                className='input-container'
-                id='username'
-                label={t['username']}
-                maxLength='40'
-                name='username'
-                required
-                store={store}
-                title={t['username-required']}
-                type='text'
-              />
-              <Input
-                checkValidity={checkValidity}
-                className='input-container'
-                id='email'
-                label={t['email-address']}
-                name='email'
-                required
-                store={store}
-                title={t['email-address-required']}
-                type='email'
-              />
+            <Input
+              checkValidity={checkValidity}
+              className='input-container'
+              id='email'
+              label={t['email-address']}
+              name='email'
+              required
+              store={store}
+              title={t['email-address-required']}
+              type='email'
+            />
 
             <Button
               type='submit'
@@ -94,12 +100,12 @@ class ForgotPassword extends Component {
           </fieldset>
         </form>
       </div>
-    </section>
+    </section>;
   }
 }
 
 ForgotPassword.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string
   // locale: PropTypes.object.isRequired,
   // config: PropTypes.object.isRequired
 };

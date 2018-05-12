@@ -18,7 +18,9 @@ const getInitialState = (config) => {
     accessToken: null,
     isAuthenticated: false,
     createAccount: {
-      isError: false
+      isError: false,
+      usernameAlreadyExists: false,
+      emailAlreadyExists: false
     },
     loginRecovery: {
       isError: false,
@@ -70,7 +72,7 @@ const authenticate = ({ username, password }, pathname) => async state => {
 };
 
 const forgotUsername = ({ firstname, lastname, email }) => async state => {
-  const loginRecovery = state.loginRecovery;
+  const loginRecovery = JSON.parse(JSON.stringify(state.loginRecovery));
   let data = null;
   loginRecovery.isError = false;
 
@@ -90,7 +92,7 @@ const forgotUsername = ({ firstname, lastname, email }) => async state => {
 };
 
 const forgotPassword = ({ username, email }) => async state => {
-  const loginRecovery = state.loginRecovery;
+  const loginRecovery = JSON.parse(JSON.stringify(state.loginRecovery));
   let data = null;
   loginRecovery.isError = false;
 
@@ -110,7 +112,7 @@ const forgotPassword = ({ username, email }) => async state => {
 };
 
 const createPassword = ({ password }) => async state => {
-  let loginRecovery = state.loginRecovery;
+  let loginRecovery = JSON.parse(JSON.stringify(state.loginRecovery));
   let data = null;
   loginRecovery.isError = false;
 
@@ -133,7 +135,7 @@ const createPassword = ({ password }) => async state => {
 };
 
 const sendPin = () => async state => {
-  const loginRecovery = state.loginRecovery;
+  const loginRecovery = JSON.parse(JSON.stringify(state.loginRecovery));
   let data = null;
   loginRecovery.isError = false;
 
@@ -151,7 +153,7 @@ const sendPin = () => async state => {
 };
 
 const verifyPin = ({ pin }) => async state => {
-  const loginRecovery = state.loginRecovery;
+  const loginRecovery = JSON.parse(JSON.stringify(state.loginRecovery));
   let data = null;
   loginRecovery.isError = false;
 
@@ -167,13 +169,13 @@ const verifyPin = ({ pin }) => async state => {
     }
 
     if (!data) loginRecovery.isError = true;
-
+    console.log(loginRecovery);
     return { loginRecovery }; // eslint-disable-line
   }
 };
 
 const getAccounts = () => async state => {
-  const loginRecovery = state.loginRecovery;
+  const loginRecovery = JSON.parse(JSON.stringify(state.loginRecovery));
   let data = null;
   loginRecovery.isError = false;
 
@@ -191,42 +193,38 @@ const getAccounts = () => async state => {
   }
 };
 
-const createAccount = ({
-  firstname,
-  lastname,
-  phone,
-  email,
-  password,
-  merchantName,
-  merchantDescription,
-  username
-}) => async state => {
+const checkForExistingUsername = ({ username }) => async state => {
+  let data = null;
+  const createAccount = getInitialState({}).createAccount;
+  try {
+    data = await axios.get(`/accounts/check-username?username=${username}`);
+  } finally {
+    createAccount.usernameAlreadyExists = !!data && data.status === 200;
+    return { createAccount }; // eslint-disable-line
+  }
+};
+
+const checkForExistingEmail = ({ email }) => async state => {
+  let data = null;
+  const createAccount = getInitialState({}).createAccount;
+  try {
+    data = await axios.get(`/accounts/check-email?email=${email}`);
+  } finally {
+    createAccount.emailAlreadyExists = !!data && data.status === 200;
+    return { createAccount }; // eslint-disable-line
+  }
+};
+
+const createAccount = (account) => async state => {
   let data = null;
   try {
-    data = await axios.post(`/create-account`, {
-      firstname,
-      lastname,
-      phone,
-      email,
-      password,
-      merchantName,
-      merchantDescription,
-      username
-    });
+    data = await axios.post(`/create-account`, account);
   } finally {
-    if (data && data.status !== 201) {
-      return {
-        createAccount: {
-          isError: true
-        }
-      };
+    if (!data || (data && data.status !== 201)) {
+      return { createAccount: { isError: true } }; // eslint-disable-line
     }
 
-    return {
-      createAccount: {
-        isError: false
-      }
-    };
+    return { createAccount: { isError: false } }; // eslint-disable-line
   }
 };
 
@@ -294,6 +292,8 @@ const toggleDevMode = () => (state) => ({ dev: !state.dev });
 
 export const actions = {
   authenticate,
+  checkForExistingUsername,
+  checkForExistingEmail,
   createPassword,
   createAccount,
   forgotPassword,

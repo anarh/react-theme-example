@@ -60,7 +60,14 @@ class VerifyPin extends Component {
     return <section className='doc-content'>
       <div className={'hiq-well hiq-login-well'}>
         <h1>Verify PIN</h1>
-        <small className='login-form-message'>{t['try-checking-junk']}</small>
+        <p className={`is-login-form-message is-size-6`}>Also, check your junk mail folder</p>
+        {
+            this.props.loginRecovery.isError && (
+              <p className='is-form-error' role='alert' aria-atomic='true'>
+                Invalid PIN, try again
+              </p>
+            )
+          }
         <form
           onSubmit={(e) => { this.handleSubmit(e); }}
           className={`${this.state.submitted ? 'form-submitted' : ''}`}
@@ -97,12 +104,12 @@ class VerifyPin extends Component {
           </ul>
         </form>
       </div>
-    </section>
+    </section>;
   }
 }
 
 VerifyPin.propTypes = {
-  className: PropTypes.string,
+  className: PropTypes.string
   // locale: PropTypes.object.isRequired,
   // config: PropTypes.object.isRequired
 };

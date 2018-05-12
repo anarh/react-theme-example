@@ -38,7 +38,7 @@ class SendPin extends Component {
     return <section className='doc-content'>
       <div className={'hiq-well hiq-login-well'}>
         <h1>Send PIN</h1>
-        <form id='sendPin'onSubmit={this.handleSubmit} className={`${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
+        <form onSubmit={this.handleSubmit} className={`${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
           <p className='is-login-form-message'>{t['pin-sent-to']} <strong>{store.loginRecovery.maskedEmail}</strong></p>
           <Button
             type='submit'

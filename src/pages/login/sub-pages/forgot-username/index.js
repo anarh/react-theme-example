@@ -44,13 +44,13 @@ class ForgotUsername extends Component {
 
     return <section className='doc-content'>
       <div className={'hiq-well hiq-login-well'}>
-      <h1 className='login-form-header'>{t['forgot-username']}</h1>
-          <form id='forgotUsername' onSubmit={(e) => { this.handleSubmit(e); }} className={`login-form card card-1 ${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
+        <h1 className='login-form-header'>{t['forgot-username']}</h1>
+        <form id='forgotUsername' onSubmit={(e) => { this.handleSubmit(e); }} className={`login-form card card-1 ${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
           <p className='is-login-form-message'>{t['retrieve-username-message']}</p>
           {
             this.props.loginRecovery.isError && (
-              <p className={`is-login-form-error`} role='alert' aria-atomic='true'>
-                Invalid name and email address
+              <p className={`is-form-error`} role='alert' aria-atomic='true'>
+                Invalid name and/or email address
               </p>
             )
           }

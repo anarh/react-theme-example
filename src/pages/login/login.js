@@ -65,21 +65,21 @@ class Login extends Component {
           <fieldset>
             {
               selectedUsername && (
-                <h2 className='login-form-info' role='alert' aria-atomic='true'>
+                <h2 className='is-login-form-info' role='alert' aria-atomic='true'>
                   {t['username-is']} <strong>{selectedUsername}</strong>
                 </h2>
               )
             }
             {
               isPasswordReset && (
-                <h2 className='login-form-info' role='alert' aria-atomic='true'>
+                <h2 className='is-login-form-info' role='alert' aria-atomic='true'>
                   {t['new-password-saved']}
                 </h2>
               )
             }
             {
               this.state.invalidUsernamePassword && (
-                <p className={`is-login-form-error`} role='alert' aria-atomic='true'>
+                <p className={`is-form-error`} role='alert' aria-atomic='true'>
                   {t['invalid-username-or-password']}
                 </p>
               )
