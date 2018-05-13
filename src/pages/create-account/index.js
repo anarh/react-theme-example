@@ -43,15 +43,9 @@ class CreateAccount extends Component {
     });
 
     await this.props.actions.createAccount({
-      firstname,
-      lastname,
-      phone,
-      email,
-      password,
-      merchantName,
-      merchantDescription,
-      username
+      firstname, lastname, phone, email, password, merchantName, merchantDescription, username
     });
+
     this.setState({ submitted: false });
 
     if (this.props.createAccount.isError) {

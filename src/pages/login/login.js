@@ -97,7 +97,7 @@ class Login extends Component {
               name='username'
               required
               store={store}
-              title={t['username-required']}
+              title='required'
               type='text'
               defaultValue={selectedUsername}
             />
@@ -113,7 +113,7 @@ class Login extends Component {
               name='password'
               required
               store={store}
-              title={t['password-required']}
+              title='required'
               type='password'
             />
             <Button

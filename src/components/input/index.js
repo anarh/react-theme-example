@@ -115,7 +115,7 @@ class Input extends Component {
     let errorTitle = null;
 
     if (title) {
-      errorTitle = <small className='is-alert-message' role='alert' aria-atomic='true'>{title}</small>;
+      errorTitle = <small className={`is-alert-message ${this.state.valid ? 'is-success' : 'is-error'}`} role='alert' aria-atomic='true'>{title}</small>;
     }
 
     return <div
@@ -123,7 +123,7 @@ class Input extends Component {
       onChange={this.handleChange}
       onFocus={this.handleFocus}
       onBlur={this.handleBlur} >
-      <label className='snput-label' htmlFor={id}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
         aria-required={required}
         className={this.state.valid ? 'is-success' : 'is-error'}
