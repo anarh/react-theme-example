@@ -134,6 +134,7 @@ class CreateAccount extends Component {
             }
 
             <form onSubmit={(e) => { this.handleSubmit(e); }} className={`${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
+              <h2>Merchant</h2>
               <div>
                 <Input
                   autoFocus
@@ -159,12 +160,13 @@ class CreateAccount extends Component {
                   type='text'
                 />
               </div>
+              <h2>Admin Account</h2>
               <div>
                 <Input
                   checkValidity={checkValidity}
                   className='input-container'
                   id='username'
-                  label='Admin Username'
+                  label='Username'
                   name='username'
                   onBlur={(e) => { this.handleUsernameCheck(e); }}
                   required
@@ -177,7 +179,7 @@ class CreateAccount extends Component {
                   checkValidity={checkValidity}
                   className='input-container'
                   id='password'
-                  label='Admin Password'
+                  label='Password'
                   name='password'
                   required
                   store={store}
@@ -190,7 +192,7 @@ class CreateAccount extends Component {
                   checkValidity={checkValidity}
                   className='input-container'
                   id='firstname'
-                  label='Admin First Name'
+                  label='First Name'
                   maxLength='40'
                   name='firstname'
                   required
@@ -203,7 +205,7 @@ class CreateAccount extends Component {
                   checkValidity={checkValidity}
                   className='input-container'
                   id='lastname'
-                  label='Admin Last Name'
+                  label='Last Name'
                   maxLength='40'
                   name='lastname'
                   required
@@ -217,7 +219,7 @@ class CreateAccount extends Component {
                   checkValidity={checkValidity}
                   className='input-container'
                   id='email'
-                  label='Admin Email Address'
+                  label='Email Address'
                   name='email'
                   onBlur={(e) => { this.handleEmailCheck(e); }}
                   required
@@ -230,7 +232,7 @@ class CreateAccount extends Component {
                   checkValidity={checkValidity}
                   className='input-container'
                   id='phone'
-                  label='Admin Phone Number'
+                  label='Phone Number'
                   name='phone'
                   required
                   store={store}
