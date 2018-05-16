@@ -8,20 +8,22 @@ import registerServiceWorker from './registerServiceWorker';
 
 // Components
 import header from './components/header';
+import sideNavigation from './components/side-navigation';
 
 // Pages
 import index from './pages/index';
 import login from './pages/login';
 import createAccount from './pages/create-account';
+import settings from './pages/settings';
 
 import { initialState, actions } from './state';
 
-// require('babel-core/register');
-// require('babel-polyfill');
-
 const Header = subscribe()(header);
+const SideNavigation = subscribe()(sideNavigation);
+
 const Index = subscribe()(index);
 const Login = subscribe()(login);
+const Settings = subscribe()(settings);
 const CreateAccount = subscribe()(createAccount);
 
 const ProtectedRoute = subscribe()(({
@@ -43,9 +45,13 @@ ReactDOM.render(
     <BrowserRouter>
       <React.Fragment>
         <Header />
-        <ProtectedRoute exact path='/' component={Index} />
-        <Route path='/login' component={Login} />
-        <Route path='/create-account' component={CreateAccount} />
+        <SideNavigation />
+        <main className='main-content'>
+          <ProtectedRoute exact path='/' component={Index} />
+          <Route path='/login' component={Login} />
+          <Route path='/create-account' component={CreateAccount} />
+          <Route path='/settings' component={Settings} />
+        </main>
       </React.Fragment>
     </BrowserRouter>
   </Provider>,
@@ -53,4 +59,3 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
-

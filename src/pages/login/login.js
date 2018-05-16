@@ -126,7 +126,7 @@ class Login extends Component {
         </form>
         <ForgotAccountLinks />
       </div>
-    </section>
+    </section>;
   }
 }
 

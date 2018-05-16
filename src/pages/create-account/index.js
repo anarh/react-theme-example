@@ -118,139 +118,137 @@ class CreateAccount extends Component {
       return this.errorMessages.required;
     };
 
-    return <main className='main-content'>
-      <div className='container'>
-        <section className='doc-content'>
-          <div className={`hiq-well hiq-create-account-well`}>
-            <h1 className='login-form-header'>Create Account</h1>
-            <p className='is-login-form-message'>Create a merchant account with the following information</p>
+    return <div className='container'>
+      <section className='doc-content'>
+        <div className={`hiq-well hiq-create-account-well`}>
+          <h1 className='login-form-header'>Create Account</h1>
+          <p className='is-login-form-message'>Create a merchant account with the following information</p>
 
-            {
-              this.props.createAccount.isError && (
-                <p className={`is-form-error`} role='alert' aria-atomic='true'>
-                  An error occurred while creating account.
-                </p>
-              )
-            }
+          {
+            this.props.createAccount.isError && (
+              <p className={`is-form-error`} role='alert' aria-atomic='true'>
+                An error occurred while creating account.
+              </p>
+            )
+          }
 
-            <form onSubmit={(e) => { this.handleSubmit(e); }} className={`${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
-              <h2>Merchant</h2>
-              <div>
-                <Input
-                  autoFocus
-                  checkValidity={checkValidity}
-                  className='input-container'
-                  id='merchantName'
-                  label='Merchant Name'
-                  name='merchantName'
-                  required
-                  store={store}
-                  title='required'
-                  type='text'
-                />
-
-                <Input
-                  checkValidity={checkValidity}
-                  className='input-container'
-                  id='merchantDescription'
-                  label='Merchant Description'
-                  name='merchantDescription'
-                  store={store}
-                  title='required'
-                  type='text'
-                />
-              </div>
-              <h2>Admin Account</h2>
-              <div>
-                <Input
-                  checkValidity={checkValidity}
-                  className='input-container'
-                  id='username'
-                  label='Username'
-                  name='username'
-                  onBlur={(e) => { this.handleUsernameCheck(e); }}
-                  required
-                  store={store}
-                  title={inputErrorMessage()}
-                  type='text'
-                />
-
-                <Input
-                  checkValidity={checkValidity}
-                  className='input-container'
-                  id='password'
-                  label='Password'
-                  name='password'
-                  required
-                  store={store}
-                  title='required'
-                  type='password'
-                />
-              </div>
-              <div>
-                <Input
-                  checkValidity={checkValidity}
-                  className='input-container'
-                  id='firstname'
-                  label='First Name'
-                  maxLength='40'
-                  name='firstname'
-                  required
-                  store={store}
-                  title='required'
-                  type='text'
-                />
-
-                <Input
-                  checkValidity={checkValidity}
-                  className='input-container'
-                  id='lastname'
-                  label='Last Name'
-                  maxLength='40'
-                  name='lastname'
-                  required
-                  store={store}
-                  title='required'
-                  type='text'
-                />
-              </div>
-              <div>
-                <Input
-                  checkValidity={checkValidity}
-                  className='input-container'
-                  id='email'
-                  label='Email Address'
-                  name='email'
-                  onBlur={(e) => { this.handleEmailCheck(e); }}
-                  required
-                  store={store}
-                  title={inputErrorMessage()}
-                  type='email'
-                />
-
-                <Input
-                  checkValidity={checkValidity}
-                  className='input-container'
-                  id='phone'
-                  label='Phone Number'
-                  name='phone'
-                  required
-                  store={store}
-                  title='required'
-                  type='tel'
-                />
-              </div>
-              <Button
-                type='submit'
-                className='is-full-width'
-                label='Create Account'
+          <form onSubmit={(e) => { this.handleSubmit(e); }} className={`${this.state.submitted ? 'form-submitted' : ''}`} method='POST' action='/'>
+            <h2>Merchant</h2>
+            <div>
+              <Input
+                autoFocus
+                checkValidity={checkValidity}
+                className='input-container'
+                id='merchantName'
+                label='Merchant Name'
+                name='merchantName'
+                required
                 store={store}
+                title='required'
+                type='text'
               />
-            </form>
-          </div>
-        </section>
-      </div>
-    </main>;
+
+              <Input
+                checkValidity={checkValidity}
+                className='input-container'
+                id='merchantDescription'
+                label='Merchant Description'
+                name='merchantDescription'
+                store={store}
+                title='required'
+                type='text'
+              />
+            </div>
+            <h2>Admin Account</h2>
+            <div>
+              <Input
+                checkValidity={checkValidity}
+                className='input-container'
+                id='username'
+                label='Username'
+                name='username'
+                onBlur={(e) => { this.handleUsernameCheck(e); }}
+                required
+                store={store}
+                title={inputErrorMessage()}
+                type='text'
+              />
+
+              <Input
+                checkValidity={checkValidity}
+                className='input-container'
+                id='password'
+                label='Password'
+                name='password'
+                required
+                store={store}
+                title='required'
+                type='password'
+              />
+            </div>
+            <div>
+              <Input
+                checkValidity={checkValidity}
+                className='input-container'
+                id='firstname'
+                label='First Name'
+                maxLength='40'
+                name='firstname'
+                required
+                store={store}
+                title='required'
+                type='text'
+              />
+
+              <Input
+                checkValidity={checkValidity}
+                className='input-container'
+                id='lastname'
+                label='Last Name'
+                maxLength='40'
+                name='lastname'
+                required
+                store={store}
+                title='required'
+                type='text'
+              />
+            </div>
+            <div>
+              <Input
+                checkValidity={checkValidity}
+                className='input-container'
+                id='email'
+                label='Email Address'
+                name='email'
+                onBlur={(e) => { this.handleEmailCheck(e); }}
+                required
+                store={store}
+                title={inputErrorMessage()}
+                type='email'
+              />
+
+              <Input
+                checkValidity={checkValidity}
+                className='input-container'
+                id='phone'
+                label='Phone Number'
+                name='phone'
+                required
+                store={store}
+                title='required'
+                type='tel'
+              />
+            </div>
+            <Button
+              type='submit'
+              className='is-full-width'
+              label='Create Account'
+              store={store}
+            />
+          </form>
+        </div>
+      </section>
+    </div>;
   }
 }
 

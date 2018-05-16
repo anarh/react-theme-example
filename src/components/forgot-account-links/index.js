@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 class Header extends Component {
   render () {
     const baseUrl = process.env.REACT_APP_PUBLIC_URL;
-  
+
     return <Fragment>
       <ul className='hiq-account-links'>
         <li>

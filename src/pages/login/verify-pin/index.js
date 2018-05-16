@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../../../components/button';
-import Input from '../../../../components/input';
+import Button from '../../../components/button';
+import Input from '../../../components/input';
 
 class VerifyPin extends Component {
   constructor (props) {

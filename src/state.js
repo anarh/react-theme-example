@@ -16,7 +16,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 const getInitialState = (config) => {
   return {
     accessToken: null,
-    isAuthenticated: false,
+    isAuthenticated: true,
     createAccount: {
       isError: false,
       usernameAlreadyExists: false,

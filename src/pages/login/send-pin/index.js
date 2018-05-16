@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../../../components/button';
+import Button from '../../../components/button';
 
 class SendPin extends Component {
   constructor (props) {

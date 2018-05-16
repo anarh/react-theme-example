@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../../../../components/button';
-import Input from '../../../../components/input';
+import Button from '../../../components/button';
+import Input from '../../../components/input';
 import validatePassword from './validate-password';
 
 class CreatePassword extends Component {
