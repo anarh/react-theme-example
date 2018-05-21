@@ -58,7 +58,7 @@ class Login extends Component {
       <div className={'hiq-well hiq-login-well'}>
         <h1>Sign In</h1>
         <h2>{process.env.REACT_APP_BASE_URL}</h2>
-        <h2>{process.env.PUBLIC_URL}</h2>
+        <h2>{process.env.REACT_APP_CDN_URL}</h2>
         <form
           onSubmit={(e) => { this.handleSubmit(e); }}
           className={`${this.state.submitted ? 'form-submitted' : ''}`}
