@@ -33,7 +33,7 @@ class SendPin extends Component {
   render () {
     const store = this.props;
     const t = this.props.locale;
-    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+    const baseUrl = process.env.REACT_APP_BASE_URL;
 
     return <section className='doc-content'>
       <div className={'hiq-well hiq-login-well'}>

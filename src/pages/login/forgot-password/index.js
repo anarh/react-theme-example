@@ -40,7 +40,7 @@ class ForgotPassword extends Component {
     const store = this.props;
     const t = store.locale;
     const checkValidity = this.state.checkValidity;
-    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+    const baseUrl = process.env.REACT_APP_BASE_URL;
 
     return <section className='doc-content'>
       <div className={'hiq-well hiq-login-well'}>

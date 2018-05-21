@@ -4,7 +4,7 @@ import Button from '../../../components/button';
 
 class ThemeEdit extends Component {
   render () {
-    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+    const baseUrl = process.env.REACT_APP_BASE_URL;
 
     return <div className='main-content-wrapper'>
       <section className='doc-content'>
