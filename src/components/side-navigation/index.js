@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 class SideNavigation extends Component {
   render () {
-    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+    const baseUrl = process.env.REACT_APP_BASE_URL;
 
     return this.props.isAuthenticated && <Fragment>
       <button className='mobile-toc-toggle' id='mobile-toc-toggle'>

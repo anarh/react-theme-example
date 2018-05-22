@@ -85,7 +85,7 @@ class CreatePassword extends Component {
     const errorBulletCss = 'error-bullet';
     const store = this.props;
     const t = store.locale;
-    const baseUrl = process.env.REACT_APP_PUBLIC_URL;
+    const baseUrl = process.env.REACT_APP_BASE_URL;
     const checkValidity = this.state.checkValidity;
     const {
       containsUsername,

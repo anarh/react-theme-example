@@ -1,0 +1,8 @@
+{
+  "root": "build/",
+  "proxies": {
+    "/static/": {
+      "origin": "${REACT_APP_CDN_URL}"
+    }
+  }
+}

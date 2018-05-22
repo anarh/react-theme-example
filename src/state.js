@@ -228,29 +228,6 @@ const createAccount = (account) => async state => {
   }
 };
 
-// const setLocale = (localeCode) => (state) => {
-//   let cobrand = state.cobrand;
-//   let locale = state.locale;
-
-//   if (localeCode && state.config.supported_locales.indexOf(localeCode) !== -1) {
-//     locale = {
-//       locales: localeCode,
-//       t: state.config.locales.filter(function (l) {
-//         return l['locale-code'] === localeCode;
-//       })[0]
-//     };
-
-//     if (cobrand.locales.length) {
-//       locale.t = Object.assign({}, locale.t, cobrand.locales.filter(function (l) {
-//         return l['locale-code'] === locale.locales;
-//       })[0]);
-//     }
-
-//     localStorage.setItem('locale', localeCode);
-//   }
-//   return { locale };
-// };
-
 const setSelectedUsername = (username) => async (state) => {
   let loginRecovery = null;
   try {
@@ -260,26 +237,6 @@ const setSelectedUsername = (username) => async (state) => {
     return { loginRecovery }; // eslint-disable-line
   }
 };
-
-// const setCobrand = (cobrandCode) => (state) => {
-//   let cobrand = state.cobrand;
-//   let locale = state.locale;
-
-//   if (cobrandCode) {
-//     cobrand = state.config.cobrands.filter(function (cobrand) {
-//       return cobrand.querystring === cobrandCode;
-//     })[0];
-
-//     if (cobrand.locales.length) {
-//       locale.t = Object.assign({}, locale.t, cobrand.locales.filter(function (l) {
-//         return l['locale-code'] === locale.locales;
-//       })[0]);
-//     }
-
-//     localStorage.setItem('cobrand', cobrandCode);
-//   }
-//   return { cobrand, locale };
-// };
 
 const signout = (user, callback) => (state) => {
   if (typeof callback === 'function') {
