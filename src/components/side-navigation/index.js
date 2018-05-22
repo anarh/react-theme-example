@@ -12,7 +12,7 @@ class SideNavigation extends Component {
         <div className='toc-wrapper'>
           <ul className='page-nav'>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/getting-started/'>Home</a>
+              <a href={baseUrl}>Home</a>
             </li>
             <li className={`toc-entry toc-h1`}>
               <a href='/hiq/guide/theming/'>Virtual Terminal</a>
