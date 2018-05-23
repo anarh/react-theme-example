@@ -137,6 +137,7 @@ class CreateAccount extends Component {
             <div>
               <Input
                 autoFocus
+                autoComplete='business-name'
                 checkValidity={checkValidity}
                 className='input-container'
                 id='merchantName'
@@ -149,6 +150,7 @@ class CreateAccount extends Component {
               />
 
               <Input
+                autoComplete='business-description'
                 checkValidity={checkValidity}
                 className='input-container'
                 id='merchantDescription'
@@ -162,6 +164,7 @@ class CreateAccount extends Component {
             <h2>Admin Account</h2>
             <div>
               <Input
+                autoComplete='Username'
                 checkValidity={checkValidity}
                 className='input-container'
                 id='username'
@@ -175,6 +178,7 @@ class CreateAccount extends Component {
               />
 
               <Input
+                autoComplete='password'
                 checkValidity={checkValidity}
                 className='input-container'
                 id='password'
@@ -188,6 +192,7 @@ class CreateAccount extends Component {
             </div>
             <div>
               <Input
+                autoComplete='given-name'
                 checkValidity={checkValidity}
                 className='input-container'
                 id='firstname'
@@ -201,6 +206,7 @@ class CreateAccount extends Component {
               />
 
               <Input
+                autoComplete='family-name'
                 checkValidity={checkValidity}
                 className='input-container'
                 id='lastname'
@@ -215,6 +221,7 @@ class CreateAccount extends Component {
             </div>
             <div>
               <Input
+                autoComplete='email'
                 checkValidity={checkValidity}
                 className='input-container'
                 id='email'
@@ -228,6 +235,7 @@ class CreateAccount extends Component {
               />
 
               <Input
+                autoComplete='tel-national'
                 checkValidity={checkValidity}
                 className='input-container'
                 id='phone'

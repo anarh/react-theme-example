@@ -183,7 +183,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   autoCapitalize: 'none',
-  autoComplete: 'off',
+  autoComplete: '',
   autoCorrect: null,
   autoFocus: false,
   checkValidity: false,
