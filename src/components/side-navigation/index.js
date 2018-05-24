@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 
 class SideNavigation extends Component {
   render () {
-    const baseUrl = process.env.REACT_APP_BASE_URL;
-
     return this.props.isAuthenticated && <Fragment>
       <button className='mobile-toc-toggle' id='mobile-toc-toggle'>
         <span>+</span>
@@ -12,53 +11,53 @@ class SideNavigation extends Component {
         <div className='toc-wrapper'>
           <ul className='page-nav'>
             <li className={`toc-entry toc-h1`}>
-              <a href={baseUrl}>Home</a>
+              <Link to='/'>Home</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/theming/'>Virtual Terminal</a>
+              <Link to='/hiq/guide/theming/'>Virtual Terminal</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/theming/'>Orders</a>
+              <Link to='/hiq/guide/theming/'>Orders</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/layout/'>Products</a>
+              <Link to='/hiq/guide/layout/'>Products</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/layout/'>Customers</a>
+              <Link to='/hiq/guide/layout/'>Customers</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/layout/'>Reports</a>
+              <Link to='/hiq/guide/layout/'>Reports</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/layout/'>Tools</a>
+              <Link to='/hiq/guide/layout/'>Tools</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/layout/'>Billing</a>
+              <Link to='/hiq/guide/layout/'>Billing</Link>
             </li>
             <li className='toc-entry toc-h1 active'>
-              <a href={`${baseUrl}/settings`}>Settings</a>
+              <Link to={`/settings`}>Settings</Link>
               <ul className='section-nav'>
                 <li className={`toc-entry toc-h2`}>
-                  <a href={`${baseUrl}/settings/merchant`}>Merchant</a>
+                  <Link to={`/settings/merchant`}>Merchant</Link>
                 </li>
                 <li className={`toc-entry toc-h2`}>
-                  <a href={`${baseUrl}/settings/users`}>Users</a>
+                  <Link to={`/settings/users`}>Users</Link>
                   <ul>
                     <li className={`toc-entry toc-h3`}>
-                      <a href='#adding-font-families'>Add User</a>
+                      <Link to='#adding-font-families'>Add User</Link>
                     </li>
                   </ul>
                 </li>
                 <li className={`toc-entry toc-h2`}>
-                  <a href={`${baseUrl}/settings/themes`}>Themes</a>
+                  <Link to={`/settings/themes`}>Themes</Link>
                 </li>
                 <li className={`toc-entry toc-h2`}>
-                  <a href={`${baseUrl}/settings/profile`}>Profile</a>
+                  <Link to={`/settings/profile`}>Profile</Link>
                 </li>
               </ul>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <a href='/hiq/guide/meters-progress/'>Sign Out</a>
+              <Link to='/hiq/guide/meters-progress/'>Sign Out</Link>
             </li>
           </ul>
         </div>
