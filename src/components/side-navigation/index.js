@@ -14,25 +14,25 @@ class SideNavigation extends Component {
               <Link to='/'>Home</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <Link to='/hiq/guide/theming/'>Virtual Terminal</Link>
+              <Link to='/theming/'>Virtual Terminal</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <Link to='/hiq/guide/theming/'>Orders</Link>
+              <Link to='/theming/'>Orders</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <Link to='/hiq/guide/layout/'>Products</Link>
+              <Link to='/layout/'>Products</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <Link to='/hiq/guide/layout/'>Customers</Link>
+              <Link to='/layout/'>Customers</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <Link to='/hiq/guide/layout/'>Reports</Link>
+              <Link to='/layout/'>Reports</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <Link to='/hiq/guide/layout/'>Tools</Link>
+              <Link to='/layout/'>Tools</Link>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <Link to='/hiq/guide/layout/'>Billing</Link>
+              <Link to='/layout/'>Billing</Link>
             </li>
             <li className='toc-entry toc-h1 active'>
               <Link to={`/settings`}>Settings</Link>
@@ -57,7 +57,7 @@ class SideNavigation extends Component {
               </ul>
             </li>
             <li className={`toc-entry toc-h1`}>
-              <Link to='/hiq/guide/meters-progress/'>Sign Out</Link>
+              <Link to='/meters-progress/'>Sign Out</Link>
             </li>
           </ul>
         </div>
